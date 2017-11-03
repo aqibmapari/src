@@ -1,0 +1,22 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Diary</ion-title>
+	</ion-navbar>
+	<ion-toolbar no-border-top>
+		<tabs-directive [tabmodel]="tabsArticle" (segmentChange)="segmentValueChange($event);" [tabselected]="segmentModel"></tabs-directive>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div [ngSwitch]="segmentModel">
+		<diary-day *ngSwitchCase="'day'"></diary-day>
+		<diary-week *ngSwitchCase="'week'"></diary-week>
+		<diary-month *ngSwitchCase="'month'"></diary-month>
+		<!-- <diary-calendar *ngSwitchCase="'calendar'"></diary-calendar> -->
+		<diary-list *ngSwitchCase="'list'"></diary-list>
+		<diary-routePlan *ngSwitchCase="'routePlan'"></diary-routePlan>
+	</div>
+</ion-content>
